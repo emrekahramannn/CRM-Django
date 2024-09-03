@@ -1,0 +1,40 @@
+{% extends 'core/base.html' %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="row my-5">   
+            <div class="col-md-8 offset-md-2">
+                <div class="card">
+                    <div class="card-header d-flex fw-bold">
+                        {{ customer_record.first_name }} {{ customer_record.last_name }}
+                        <small class="ms-auto">
+                            {{ customer_record.created_at }}
+                        </small>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            <strong>CustomerID:</strong> {{ customer_record.id}}
+                        </p>
+                        <p class="card-text d-flex">
+                            <span class="me-auto">
+                                <strong>Email:</strong> {{ customer_record.email }}</span>
+                            <span class="ms-auto"><strong>Phone:</strong> {{ customer_record.phone }}</span> 
+                        </p>
+                        <p class="card-text d-flex">
+                            <span class="me-auto">
+                                <strong>Address:</strong> {{ customer_record.address }} &nbsp; {{ customer_record.state }}/{{ customer_record.city }} &nbsp;&nbsp;{{ customer_record.country }}  
+                            </span> 
+                            <span class="ms-auto">
+                                <strong>Zipcode:</strong> {{ customer_record.zipcode }} 
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                <a href="{% url 'home' %}" class="btn btn-secondary mt-3">Back</a>
+                <a href="{% url 'delete_record' customer_record.id %}" class="btn btn-danger mt-3">Delete</a>
+                <a href="{% url 'update_record' customer_record.id %}" class="btn btn-primary mt-3">Update</a>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
